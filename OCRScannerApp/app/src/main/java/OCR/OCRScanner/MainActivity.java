@@ -9,7 +9,7 @@ import com.mihinduranasinhe.OCR.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static int SPLASH_TIME_OUT  = 4000;
+    private static int SPLASH_TIME_OUT = 4000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +20,10 @@ public class MainActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent homeIntent =  new Intent(MainActivity.this, HomeActivity.class);
+                Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
                 startActivity(homeIntent);
                 finish();
             }
-        },SPLASH_TIME_OUT);
+        }, SPLASH_TIME_OUT);
     }
 }

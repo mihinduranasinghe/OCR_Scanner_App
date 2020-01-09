@@ -15,9 +15,9 @@ public class Database {
 
         MongoCollection collection = database.getCollection("test");
 
-        Document document = new Document("Name","Mihindu");
-        document.append("Age","22");
-        document.append("Gender","Male");
+        Document document = new Document("Name", "Mihindu");
+        document.append("Age", "22");
+        document.append("Gender", "Male");
         collection.insertOne(document);
     }
 }

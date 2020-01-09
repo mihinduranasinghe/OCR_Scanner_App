@@ -50,6 +50,11 @@ public class HomeActivity extends AppCompatActivity {
     private static final String errorFileCreate = "Error file create!";
     private static final String errorConvert = "Error convert!";
 
+    private static final String CaptureImageRequest = "capture";
+    private static final String uploadImageRequest = "upload";
+
+
+
     @BindView(R.id.ocr_image)
     ImageView firstImage;
 
@@ -81,8 +86,6 @@ public class HomeActivity extends AppCompatActivity {
         String language = "eng";
         mTessOCR = new TesseractOCR(this, language);
 
-
-
     }
 
 
@@ -91,7 +94,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
 
         switch (requestCode) {
-            case 1: {
+            case 1: {//CaptureImageRequest
                 if (resultCode == RESULT_OK) {
                     Bitmap bmp = null;
                     try {
@@ -129,15 +132,14 @@ public class HomeActivity extends AppCompatActivity {
             }
 
 
-
-            case 2: {
+            case 2: {//UploadImageRequest
                 if (resultCode == RESULT_OK) {
 
                     if (resultCode == Activity.RESULT_OK) {
 
                         Uri selectedImage = data.getData();
-                        String[] filePathColumn = { MediaStore.Images.Media.DATA };
-                        Cursor cursor = getContentResolver().query(selectedImage,filePathColumn, null, null, null);
+                        String[] filePathColumn = {MediaStore.Images.Media.DATA};
+                        Cursor cursor = getContentResolver().query(selectedImage, filePathColumn, null, null, null);
                         cursor.moveToFirst();
                         int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
                         String picturePath = cursor.getString(columnIndex);
@@ -187,8 +189,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-
-
     @OnClick(R.id.scan_button)
     void onClickScanButton() {
         // check permissions
@@ -207,12 +207,12 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(context, errorFileCreate, Toast.LENGTH_SHORT).show();
                 Log.i("File error", ex.toString());
             }
-             // Continue only if the File was successfully created
+            // Continue only if the File was successfully created
             if (photoFile != null) {
                 oldPhotoURI = photoURI1;
                 photoURI1 = Uri.fromFile(photoFile);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI1);
-                startActivityForResult(takePictureIntent, 1);
+                startActivityForResult(takePictureIntent, CaptureImageRequest);
             }
         }
     }
@@ -223,16 +223,14 @@ public class HomeActivity extends AppCompatActivity {
 
         //Database.testDBConnection();
 
-        Log.d("upload","Try to show photo selector");
+        Log.d("upload", "Try to show photo selector");
 //        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
 //        photoPickerIntent.setType("image/*");
 //        startActivityForResult(photoPickerIntent, 2);
-        Intent i = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(i, 2);
+        Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(i, uploadImageRequest);
 
     }
-
-
 
 
     public File createImageFile() throws IOException {
@@ -249,8 +247,6 @@ public class HomeActivity extends AppCompatActivity {
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
     }
-
-
 
 
     void checkPermissions() {
@@ -275,11 +271,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-
     private void doOCR(final Bitmap bitmap) {
         if (mProgressDialog == null) {
-            mProgressDialog = ProgressDialog.show(this, "Processing",
-                    "Doing OCR...", true);
+            mProgressDialog = ProgressDialog.show(this, "Extracting",
+                    "Processing OCR...", true);
         } else {
             mProgressDialog.show();
         }
