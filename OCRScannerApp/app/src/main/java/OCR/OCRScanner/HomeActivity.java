@@ -50,8 +50,8 @@ public class HomeActivity extends AppCompatActivity {
     private static final String errorFileCreate = "Error file create!";
     private static final String errorConvert = "Error convert!";
 
-    private static final String CaptureImageRequest = "capture";
-    private static final String uploadImageRequest = "upload";
+    private static final int CaptureImageRequest = 1;
+    private static final int uploadImageRequest = 2;
 
 
 
