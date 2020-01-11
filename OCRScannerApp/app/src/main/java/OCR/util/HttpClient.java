@@ -68,7 +68,6 @@ public class HttpClient {
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-
                     }
                 });
                 Looper.loop();
