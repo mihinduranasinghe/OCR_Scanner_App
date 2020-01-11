@@ -65,18 +65,19 @@
             android:background="@android:color/darker_gray"
             android:orientation="horizontal">
 
-            <TextView
+            <EditText
                 android:id="@+id/ocr_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill"
                 android:textStyle="italic"
+                android:editable="false"
                 android:textAlignment="center"
                 android:textIsSelectable="true"
                 android:textColor="@android:color/black"
                 android:text=" Your extracted text will be displayed here">
 
-            </TextView>
+            </EditText>
 
 
         </LinearLayout>
