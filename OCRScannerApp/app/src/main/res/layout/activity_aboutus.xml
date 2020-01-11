@@ -47,14 +47,6 @@
          You can even upload images and extract the text on that and copy it to clip board.
 And      also we introduce Live Camera feature to extract texts lively when you focus camera towards something" />
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="5dp"
-            android:text='Text Recognizer is developed by "CyberCats IT" Software Solutions (PVT.LTD).' />
 
 
 

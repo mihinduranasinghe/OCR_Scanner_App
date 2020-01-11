@@ -1,8 +1,4 @@
 <resources>
-<<<<<<< HEAD
     <string name="app_name">OCRScanner App</string>
     <string name="about_us">About Us</string>
-=======
-    <string name="app_name">Text Recognizer</string>
->>>>>>> 64f383a2fdf0ab461e5148f5768751504d4b57b9
 </resources>
