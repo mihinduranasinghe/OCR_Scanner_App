@@ -41,7 +41,8 @@ public class HomeActivity extends AppCompatActivity {
     private static final int CaptureImageRequest = 1;
     private static final int uploadImageRequest = 2;
 
-    private static final String backendurl = "http://192.168.8.100:4000/api/image";
+//    private static final String backendurl = "http://192.168.8.100:4000/api/image";
+    private static final String backendurl = "https://ocr-backend-mihindu.herokuapp.com/api/image";
 
     private ProgressDialog progressDialog;
 
