@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">OCRScanner App</string>
+    <string name="app_name">Text Recognizer</string>
     <string name="about_us">About Us</string>
 </resources>

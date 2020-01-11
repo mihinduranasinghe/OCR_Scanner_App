@@ -29,7 +29,7 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:fontFamily="@font/almendra_bold_italic"
-        android:text="OCR Scanner App "
+        android:text="Text Recognizer"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="30sp"
