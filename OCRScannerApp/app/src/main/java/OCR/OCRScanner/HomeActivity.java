@@ -97,122 +97,13 @@ public class HomeActivity extends AppCompatActivity {
                         photoURI1 = selectedImage;
                         CropImage.activity(photoURI1).start(this);
 
-
-//
-//                        HttpClient.DoOCR(progressDialog, this, photoURI1, backendurl);
-//                        progressDialog.show();
-//                        File file;
-//                        file = new File(PathGenerator.getPath(this, photoURI1));
-//                        ImageView imageView = findViewById(R.id.ocr_image);
-//
-//                        imageView.setImageURI(photoURI1);
-//
-//                        final SyncHttpClient client = new SyncHttpClient();
-//                        final RequestParams params = new RequestParams();
-//
-//                        client.setConnectTimeout(60000);
-//                        client.setResponseTimeout(120000);
-//
-//                        try {
-//                            params.put("image", file, PathGenerator.getContentType(PathGenerator.getPath(this, photoURI1)));
-//                        } catch (FileNotFoundException e) {
-//                            e.printStackTrace();
-//                        }
-//
-//                        new Thread() {
-//                            @Override
-//                            public void run() {
-//                                Looper.prepare();
-//                                client.post(backendurl, params, new TextHttpResponseHandler() {
-//                                    @Override
-//                                    public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-//                                    }
-//
-//                                    @Override
-//                                    public void onSuccess(int statusCode, Header[] headers, String responseString) {
-//                                        final JSONObject json;
-//                                        try {
-//                                            json = new JSONObject(responseString);
-//                                            runOnUiThread(() -> {
-//                                                TextView textView = findViewById(R.id.ocr_text);
-//                                                try {
-//                                                    textView.setText(json.get("text").toString());
-//                                                    progressDialog.dismiss();
-//                                                } catch (JSONException e) {
-//                                                    e.printStackTrace();
-//                                                }
-//                                            });
-//                                        } catch (JSONException e) {
-//                                            e.printStackTrace();
-//                                        }
-//
-//                                    }
-//                                });
-//                                Looper.loop();
-//                            }
-//                        }.start();
-                    }
-                }
-            }
             break;
 
             case CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE: {
                 photoURI1 = CropImage.getActivityResult(data).getUri();
 
                 HttpClient.DoOCR(progressDialog, this, photoURI1, backendurl);
-//                progressDialog.show();
-//                File file;
-//
-//
-//                file = new File(PathGenerator.getPath(this, photoURI1));
-//                ImageView imageView = findViewById(R.id.ocr_image);
-//
-//                imageView.setImageURI(photoURI1);
-//
-//                final SyncHttpClient client = new SyncHttpClient();
-//                final RequestParams params = new RequestParams();
-//
-//                client.setConnectTimeout(60000);
-//                client.setResponseTimeout(120000);
-//
-//                try {
-//                    params.put("image", file, PathGenerator.getContentType(PathGenerator.getPath(this, photoURI1)));
-//                } catch (FileNotFoundException e) {
-//                    e.printStackTrace();
-//                }
-//
-//                new Thread() {
-//                    @Override
-//                    public void run() {
-//                        Looper.prepare();
-//                        client.post(backendurl, params, new TextHttpResponseHandler() {
-//                            @Override
-//                            public void onFailure(int statusCode, Header[] headers, String responseString, Throwable throwable) {
-//                            }
-//
-//                            @Override
-//                            public void onSuccess(int statusCode, Header[] headers, String responseString) {
-//                                final JSONObject json;
-//                                try {
-//                                    json = new JSONObject(responseString);
-//                                    runOnUiThread(() -> {
-//                                        TextView textView = findViewById(R.id.ocr_text);
-//                                        try {
-//                                            textView.setText(json.get("text").toString());
-//                                            progressDialog.dismiss();
-//                                        } catch (JSONException e) {
-//                                            e.printStackTrace();
-//                                        }
-//                                    });
-//                                } catch (JSONException e) {
-//                                    e.printStackTrace();
-//                                }
-//
-//                            }
-//                        });
-//                        Looper.loop();
-//                    }
-//                }.start();
+
             }
 
 
