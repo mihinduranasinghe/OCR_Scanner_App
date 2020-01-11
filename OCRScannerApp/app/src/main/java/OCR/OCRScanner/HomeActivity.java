@@ -41,8 +41,8 @@ public class HomeActivity extends AppCompatActivity {
     private static final int CaptureImageRequest = 1;
     private static final int uploadImageRequest = 2;
 
-//    private static final String backendurl = "http://192.168.8.100:4000/api/image";
-    private static final String backendurl = "https://ocr-backend-mihindu.herokuapp.com/api/image";
+       private static final String backendurl = "http://192.168.8.100:4000/api/image";
+    //private static final String backendurl = "https://ocr-backend-mihindu.herokuapp.com/api/image";
 
     private ProgressDialog progressDialog;
 
@@ -72,7 +72,6 @@ public class HomeActivity extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setTitle("Waiting for server response!");
         progressDialog.setCanceledOnTouchOutside(false);
-
     }
 
 
@@ -88,7 +87,6 @@ public class HomeActivity extends AppCompatActivity {
             }
             break;
 
-
             case 2: {//UploadImageRequest
                 if (resultCode == RESULT_OK) {
 
@@ -96,17 +94,16 @@ public class HomeActivity extends AppCompatActivity {
                         Uri selectedImage = data.getData();
                         photoURI1 = selectedImage;
                         CropImage.activity(photoURI1).start(this);
-
+                    }
+                }
+            }
             break;
 
             case CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE: {
                 photoURI1 = CropImage.getActivityResult(data).getUri();
 
                 HttpClient.DoOCR(progressDialog, this, photoURI1, backendurl);
-
             }
-
-
         }
     }
 
@@ -145,6 +142,5 @@ public class HomeActivity extends AppCompatActivity {
         Log.d("upload", "Try to show photo selector");
         Intent i = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(i, uploadImageRequest);
-
     }
 }
